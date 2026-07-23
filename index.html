@@ -1,306 +1,869 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soul of Waifu</title>
+    <title>Soul of Waifu — Breathe Soul Into Your AI Characters</title>
+    <meta name="title" content="Soul of Waifu — Breathe Soul Into Your AI Characters">
+    <meta name="description" content="Free, open-source desktop app bridging AI and reality. Experience custom personal chat, multi-character text-RPG campaigns in Soul Stage, or bring a Soul Companion overlay directly onto your desktop to interact with your screen, apps, and tools.">
+    <meta name="keywords" content="soul of waifu, desktop-app, python, ai, anime, chatbot, live2d, roleplay, vrm, live2d-model, virtual-girlfriend, neurosama, llamacpp, character-ai, ai-vtuber, ai-waifu, local-llm, ai-girlfriend, ai-companion, ai-roleplay, desktop-companion, desktop-assistant, mcp-client, computer-vision, game-master-ai, soul-stage, soul-companion">
+    <meta name="author" content="Jofi">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jofizcd.github.io/soul-of-waifu-site/">
+    <meta property="og:title" content="Soul of Waifu — Breathe Soul Into Your AI Characters">
+    <meta property="og:description" content="Engage in deep personal chats, embark on epic text-RPG campaigns under an AI Game Master in Soul Stage, or let a Soul Companion live on your desktop, using screen vision and tools to bridge AI with reality.">
+    <meta property="og:image" content="https://jofizcd.github.io/soul-of-waifu-site/assets/og-preview.jpg">
+    <meta property="og:site_name" content="Soul of Waifu">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://jofizcd.github.io/soul-of-waifu-site/">
+    <meta name="twitter:title" content="Soul of Waifu — Breathe Soul Into Your AI Characters">
+    <meta name="twitter:description" content="Engage in deep personal chats, embark on epic text-RPG campaigns under an AI Game Master in Soul Stage, or let a Soul Companion live on your desktop, using screen vision and tools to bridge AI with reality.">
+    <meta name="twitter:image" content="https://jofizcd.github.io/soul-of-waifu-site/assets/og-preview.jpg">
+    <meta name="theme-color" content="#0a0a0c">
     <link rel="icon" type="image/x-icon" href="assets/icons/logotype.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <a href="#home" class="active nav-home">
-                        <img src="assets/icons/logotitle.png" alt="logotype" width="160px" height="50px" class="logo-dark">
-                        <img src="assets/icons/logotitle_black.png" alt="logotype" width="160px" height="50px" class="logo-light" style="display: none;">
-                    </a>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#features" class="nav-features">Возможности</a></li>
-                    <li><a href="#screenshots" class="nav-screenshots">Скриншоты</a></li>
-                    <li><a href="#history" class="nav-history">История</a></li>
-                    <li><a href="#download" class="nav-download">Скачать</a></li>
-                    <li>
-                        <div class="theme-language-controls">
-                            <div class="theme-toggle" id="themeToggle">
-                                <div class="theme-toggle-slider"></div>
-                            </div>
-                            <select class="language-selector" id="languageSelector">
-                                <option value="ru">RU</option>
-                                <option value="en">EN</option>
-                            </select>
-                        </div>
-                    </li>
-                </ul>
+    <header id="mainHeader">
+        <div class="header-inner">
+            <a href="#home" class="logo-link">
+                <img src="assets/icons/logotitle.png" alt="Soul of Waifu" class="logo-img logo-dark">
+                <img src="assets/icons/logotitle_black.png" alt="Soul of Waifu" class="logo-img logo-light">
+            </a>
+            <nav class="main-nav">
+                <a href="#dimensions" class="nav-link" data-i18n="nav_dimensions">Concept</a>
+                <a href="#features" class="nav-link" data-i18n="nav_features">Features</a>
+                <a href="#screenshots" class="nav-link" data-i18n="nav_screenshots">Screenshots</a>
+                <a href="#history" class="nav-link" data-i18n="nav_history">History</a>
+                <a href="#download" class="nav-link nav-download-link" data-i18n="nav_download">Download</a>
             </nav>
+            <div class="header-controls">
+                <button class="theme-btn" id="themeBtn" title="Change theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="lang-btn" id="langBtn">EN</button>
+                <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#dimensions" class="nav-link" data-i18n="nav_dimensions">Concept</a>
+            <a href="#features" class="nav-link" data-i18n="nav_features">Features</a>
+            <a href="#screenshots" class="nav-link" data-i18n="nav_screenshots">Screenshots</a>
+            <a href="#history" class="nav-link" data-i18n="nav_history">History</a>
+            <a href="#download" class="nav-link" data-i18n="nav_download">Download</a>
         </div>
     </header>
+
     <section id="home" class="hero">
-        <div id="particles-js"></div>
-        <div class="hero-content">
-            <div class="hero-main-content">
-                <div class="hero-text-content">
-                    <h1 class="hero-title">Вдохните душу в ваших любимых персонажей</h1>
-                    <p class="hero-description">Soul of Waifu - это десктопное приложение с открытым исходным кодом, где вы можете оживить своих персонажей и вести общение с ИИ-моделями - даже локальными. Никаких сложных настроек, только мгновенное погружение в мир ролевых игр с нейросетью!</p>
-                    <div class="cta-buttons">
-                        <a href="#download" class="btn btn-primary download-btn">Скачать для Windows</a>
-                        <a href="docs/overview/overview.html" class="btn btn-secondary docs-btn">Документация</a>
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-body">
+            <div class="hero-text">
+                <div class="sow-kernel-prompt">
+                    <span class="kernel-user">sow-os:~$</span>
+                    <span class="kernel-cmd">boot --soul-core --v2.4</span>
+                    <span class="kernel-cursor"></span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="hero-line" data-i18n="hero_title_1">Breathe soul</span>
+                    <span class="hero-line hero-accent" data-i18n="hero_title_2">into your characters</span>
+                </h1>
+                <p class="hero-desc" data-i18n="hero_desc">
+                    Soul of Waifu is an open-source narrative AI engine. Create characters, run roleplay, use local and cloud models. No complexity — just immersion.
+                </p>
+                <div class="hero-actions">
+                    <a href="#download" class="btn-glow" data-i18n="hero_btn_dl">
+                        <i class="fab fa-windows"></i> Download for Windows
+                    </a>
+                    <a href="docs/index.html" class="btn-ghost" data-i18n="hero_btn_docs">
+                        <i class="fas fa-book-open"></i> Documentation
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">28</span>
+                        <span class="stat-label" data-i18n="stat_emotions">emotions</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">10</span>
+                        <span class="stat-label" data-i18n="stat_providers">LLM providers</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">v2.4</span>
+                        <span class="stat-label" data-i18n="stat_version">version</span>
                     </div>
                 </div>
-                <div class="hero-image-content">
-                    <div class="hero-screenshot-container">
-                        <div class="hero-screenshot-wrapper">
-                            <div class="hero-screenshot-particles">
-                                <div class="particle-1"></div>
-                                <div class="particle-2"></div>
-                            </div>
-                            <video autoplay muted loop playsinline class="hero-screenshot">
-                                <source src="https://files.catbox.moe/svyvc7.mp4" type="video/mp4">
-                            </video>
+            </div>
+            <div class="hero-visual">
+                <div class="mockup-glow"></div>
+                
+                <div class="cyber-orbit-rings">
+                    <div class="orbit-ring ring-outer"></div>
+                    <div class="orbit-ring ring-mid"></div>
+                    <div class="orbit-ring ring-inner"></div>
+                </div>
+                
+                <div class="mockup-frame">
+                    <div class="mockup-bar">
+                        <span class="tb-dot tb-red"></span>
+                        <span class="tb-dot tb-yellow"></span>
+                        <span class="tb-dot tb-green"></span>
+                        <span class="tb-title">Soul of Waifu 2.4</span>
+                    </div>
+                    <div class="mockup-screen">
+                        <video autoplay muted loop playsinline class="hero-video">
+                            <source src="assets/preview.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <div class="scroll-wheel"></div>
+            <span data-i18n="scroll_hint">scroll</span>
+        </div>
+    </section>
+
+    <section id="dimensions" class="dimensions">
+        <canvas class="section-bg section-bg-dimensions" aria-hidden="true"></canvas>
+        <div class="section-bg-overlay" aria-hidden="true"></div>
+        <div class="section-wrap">
+            <div class="sow-console-label">
+                <span data-i18n="dim_label">Architecture</span>
+                <span class="kernel-cursor"></span>
+            </div>
+            <h2 class="section-title" data-i18n="dim_title">One Soul. Three Dimensions.</h2>
+            <p class="section-sub" data-i18n="dim_sub">Your companion's consciousness is unified. Watch them transition seamlessly across three distinct dimensions of existence, powered by a single, evolving cognitive memory core.</p>
+            <div class="dim-block dim-right reveal core-hub-block" data-dim="memory">
+                <div class="dim-visual">
+                    <div class="dim-glow dim-glow-memory"></div>
+                    <div class="dim-shot-frame">
+                        <div class="mockup-bar">
+                            <span class="tb-dot tb-red"></span>
+                            <span class="tb-dot tb-yellow"></span>
+                            <span class="tb-dot tb-green"></span>
+                            <span class="tb-title">Soul Memory · Unified Engine Core</span>
+                            <span class="dim-live-tag"><span class="dim-live-dot"></span> Active</span>
+                        </div>
+                        <div class="dim-shot-screen">
+                            <img src="assets/screenshots/sc_soul_memory_1.png" alt="Soul Memory core engine" loading="lazy">
+                            <canvas id="dimNeuralCanvas" class="memory-neural"></canvas>
                         </div>
                     </div>
                 </div>
+                <div class="dim-text">
+                    <div class="dim-tag dim-tag-memory"><i class="fas fa-brain"></i> <em data-i18n="dim_memory_tag">Unified Cognitive Core</em></div>
+                    <h3 data-i18n="dim_memory_title">Soul Memory — The Thread of Existence</h3>
+                    <p data-i18n="dim_memory_desc">Every character in Soul of Waifu possesses a single, unified digital brain. Whether you are chatting over voice, embarking on an RPG quest, or working with your companion on the desktop, they share the exact same memories, relationship states, and personal reflections. Their soul is not fragmented — it evolves continuously across all environments.</p>
+                    <ul class="fpanel-list">
+                        <li data-i18n="dim_memory_li_0"><i class="fas fa-check"></i> <strong>Subjective Diary:</strong> Deep first-person journal entries reflecting on your interactions across all modes</li>
+                        <li data-i18n="dim_memory_li_1"><i class="fas fa-check"></i> <strong>Persistent Relationship:</strong> Trust, affection, and behavioral traits adapt globally and persist seamlessly</li>
+                        <li data-i18n="dim_memory_li_2"><i class="fas fa-check"></i> <strong>Memory Self-Healing:</strong> A background agent constantly resolves factual and logical contradictions</li>
+                        <li data-i18n="dim_memory_li_3"><i class="fas fa-check"></i> <strong>Cognitive Profiles:</strong> Four distinct modes of memory depth to optimize your system resources</li>
+                    </ul>
+                    <div class="dim-metrics">
+                        <div class="dim-metric"><span class="dm-num">4</span><span class="dm-label" data-i18n="dim_memory_metric_0">memory layers</span></div>
+                        <div class="dm-sep"></div>
+                        <div class="dim-metric"><span class="dm-num">∞</span><span class="dm-label" data-i18n="dim_memory_metric_1">diary entries</span></div>
+                        <div class="dm-sep"></div>
+                        <div class="dim-metric"><span class="dm-num">4</span><span class="dm-label" data-i18n="dim_memory_metric_2">cognitive profiles</span></div>
+                    </div>
+                </div>
             </div>
-            <div class="scroll-indicator">
-                <span class="scroll-text">Прокрутите вниз</span>
-                <i class="fas fa-chevron-down"></i>
+
+            <div class="pipeline-header reveal" style="text-align: center; margin: 4rem 0 2rem;">
+                <h3 style="font-size: 1.8rem; font-weight: 600; letter-spacing: -0.02em;" data-i18n="pipeline_title">The Three Dimensions of Interaction</h3>
+                <p style="opacity: 0.7; font-size: 1rem;" data-i18n="pipeline_sub">Your companion seamlessly morphs across three states depending on your needs.</p>
             </div>
+
+            <div class="dim-progress reveal">
+                <div class="dp-step active" data-step="1">
+                    <span class="dp-dot">I</span>
+                    <span class="dp-label" data-i18n="dim_prog_0">Chat</span>
+                </div>
+                <div class="dp-line"></div>
+                <div class="dp-step" data-step="3">
+                    <span class="dp-dot">II</span>
+                    <span class="dp-label" data-i18n="dim_prog_1">Adventure</span>
+                </div>
+                <div class="dp-line"></div>
+                <div class="dp-step" data-step="4">
+                    <span class="dp-dot">III</span>
+                    <span class="dp-label" data-i18n="dim_prog_2">Reality</span>
+                </div>
+            </div>
+
+            <div class="dim-track">
+                <div class="dim-block reveal" data-dim="chat">
+                    <div class="dim-visual">
+                        <div class="dim-glow dim-glow-chat"></div>
+                        <div class="dim-shot-frame">
+                            <div class="mockup-bar">
+                                <span class="tb-dot tb-red"></span>
+                                <span class="tb-dot tb-yellow"></span>
+                                <span class="tb-dot tb-green"></span>
+                                <span class="tb-title">Soul of Waifu · Chat</span>
+                                <span class="dim-live-tag"><span class="dim-live-dot"></span> Live</span>
+                            </div>
+                            <div class="dim-shot-screen">
+                                <img src="assets/screenshots/sc_chat_1.png" alt="Soul of Waifu chat interface" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dim-text">
+                        <div class="dim-tag dim-tag-chat"><span>I</span> <em data-i18n="dim_chat_tag">Pure thought</em></div>
+                        <h3 data-i18n="dim_chat_title">Text & Voice Chat</h3>
+                        <p data-i18n="dim_chat_desc">Text and voice chat with no artificial filters or restrictions. You have complete control over your roleplay experience — from interactive lorebooks to a flexible system of custom state variables. Create any scenario, assign a voice and visual avatar to your hero, and start your journey all within a single app.</p>
+                        <ul class="fpanel-list">
+                            <li data-i18n="dim_chat_li_0"><i class="fas fa-check"></i> Total creative freedom: interactive lorebooks, flexible editors, state variables, and avatars</li>
+                            <li data-i18n="dim_chat_li_1"><i class="fas fa-check"></i> Natural dialogue: built-in voice engines with real-time speech streaming</li>
+                            <li data-i18n="dim_chat_li_2"><i class="fas fa-check"></i> Complete flexibility: run models 100% locally or connect to powerful cloud APIs</li>
+                        </ul>
+                        <div class="dim-metrics">
+                            <div class="dim-metric"><span class="dm-num">6</span><span class="dm-label" data-i18n="dim_chat_metric_0">TTS engines</span></div>
+                            <div class="dm-sep"></div>
+                            <div class="dim-metric"><span class="dm-num">3</span><span class="dm-label" data-i18n="dim_chat_metric_1">variations of avatars</span></div>
+                            <div class="dm-sep"></div>
+                            <div class="dim-metric"><span class="dm-num">0</span><span class="dm-label" data-i18n="dim_chat_metric_2">censorship</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dim-block dim-right reveal" data-dim="stage">
+                    <div class="dim-visual">
+                        <div class="dim-glow dim-glow-stage"></div>
+                        <div class="dim-shot-frame">
+                            <div class="mockup-bar">
+                                <span class="tb-dot tb-red"></span>
+                                <span class="tb-dot tb-yellow"></span>
+                                <span class="tb-dot tb-green"></span>
+                                <span class="tb-title">Soul Stage · RPG</span>
+                                <span class="dim-live-tag"><span class="dim-live-dot"></span> Running</span>
+                            </div>
+                            <div class="dim-shot-screen">
+                                <img src="assets/screenshots/sc_soul_stage_1.png" alt="Soul Stage" loading="lazy">
+                                <canvas id="dimPetals" class="stage-petals"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dim-text">
+                        <div class="dim-tag dim-tag-stage"><span>II</span> <em data-i18n="dim_stage_tag">Great adventure</em></div>
+                        <h3 data-i18n="dim_stage_title">Soul Stage — RPG Immersion</h3>
+                        <p data-i18n="dim_stage_desc">Turn a regular chat into a full text RPG. A party of heroes journeys under a virtual Game Master — with inventory, dynamic NPCs, and random events.</p>
+                        <ul class="fpanel-list">
+                            <li data-i18n="dim_stage_li_0"><i class="fas fa-check"></i> AI Game Master and story triggers</li>
+                            <li data-i18n="dim_stage_li_1"><i class="fas fa-check"></i> Inventory and stats system</li>
+                            <li data-i18n="dim_stage_li_2"><i class="fas fa-check"></i> Dynamic NPCs and random events</li>
+                        </ul>
+                        <div class="dim-metrics">
+                            <div class="dim-metric"><span class="dm-num">∞</span><span class="dm-label" data-i18n="dim_stage_metric_0">party heroes</span></div>
+                            <div class="dm-sep"></div>
+                            <div class="dim-metric"><span class="dm-num">∞</span><span class="dm-label" data-i18n="dim_stage_metric_1">NPCs and locations</span></div>
+                            <div class="dm-sep"></div>
+                            <div class="dim-metric"><span class="dm-num">∞</span><span class="dm-label" data-i18n="dim_stage_metric_2">genres of plot</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dim-block reveal" data-dim="companion">
+                    <div class="dim-visual">
+                        <div class="dim-glow dim-glow-companion"></div>
+                        <div class="dim-shot-frame">
+                            <div class="mockup-bar">
+                                <span class="tb-dot tb-red"></span>
+                                <span class="tb-dot tb-yellow"></span>
+                                <span class="tb-dot tb-green"></span>
+                                <span class="tb-title">Desktop · Soul Companion</span>
+                                <span class="comp-clock" id="dimClock">23:47</span>
+                            </div>
+                            <div class="dim-shot-screen">
+                                <img src="assets/screenshots/sc_soul_companion_1.jpg" alt="Soul of Waifu System mode" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dim-text">
+                        <div class="dim-tag dim-tag-companion"><span>III</span> <em data-i18n="dim_companion_tag">Into reality</em></div>
+                        <h3 data-i18n="dim_companion_title">Soul Companion — Your Desktop Assistant</h3>
+                        <p data-i18n="dim_companion_desc">Your character steps out of the chat and onto your desktop as a Live2D or VRM avatar. Powered by neurohormones, they experience tiredness, get bored, share thoughts, and proactively start conversations, commenting on your activity and helping you with daily PC tasks.</p>
+                        <ul class="fpanel-list">
+                            <li data-i18n="dim_companion_li_0"><i class="fas fa-check"></i> Environmental awareness: visual screen recognition and smart clipboard reading</li>
+                            <li data-i18n="dim_companion_li_1"><i class="fas fa-check"></i> Proactive AI: thoughtful commentary on your activity and independent thoughts</li>
+                            <li data-i18n="dim_companion_li_2"><i class="fas fa-check"></i> Tool Calling support: use the built-in tools or connect to an MCP server</li>
+                        </ul>
+                        <div class="dim-metrics">
+                            <div class="dim-metric"><span class="dm-num">24<span class="dm-unit">/7</span></span><span class="dm-label" data-i18n="dim_companion_metric_0">always active</span></div>
+                            <div class="dm-sep"></div>
+                            <div class="dim-metric"><span class="dm-num">MCP</span><span class="dm-label" data-i18n="dim_companion_metric_1">protocol support</span></div>
+                            <div class="dm-sep"></div>
+                            <div class="dim-metric"><span class="dm-num">6</span><span class="dm-label" data-i18n="dim_companion_metric_2">built-in tools</span></div>
+                        </div>
+                        <div class="dim-specs">
+                            <span class="dim-spec" data-i18n="spec_mcp">MCP Protocol</span>
+                            <span class="dim-spec" data-i18n="spec_screen_aware">Screen Aware</span>
+                            <span class="dim-spec" data-i18n="spec_neurohormones">Neurohormones</span>
+                            <span class="dim-spec" data-i18n="spec_proactive_ai">Proactive AI</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="dim-unify reveal">
+                <p data-i18n="dim_unify_text">Configure your character once — their unified soul will accompany you all the way from a deep text line to immersive RPG campaigns and desktop co-presence.</p>
+                <a href="#download" class="btn-glow"><i class="fas fa-arrow-down"></i> <span data-i18n="dim_unify_btn">Download Soul of Waifu</span></a>
+            </div>
+
         </div>
     </section>
     <section id="features" class="features">
-        <div class="section-container">
-            <h2 class="section-title features-title">Основные возможности</h2>
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fa-regular fa-face-smile"></i>
+        <canvas class="section-bg section-bg-features" aria-hidden="true"></canvas>
+        <div class="section-bg-overlay" aria-hidden="true"></div>
+        <div class="section-wrap">
+            <div class="sow-console-label">
+                <span data-i18n="feat_label">Features</span>
+                <span class="kernel-cursor"></span>
+            </div>
+            <h2 class="section-title" data-i18n="feat_title">Everything you need for immersion</h2>
+            <p class="section-sub" data-i18n="feat_sub">Powerful engine under the hood, intuitive interface on top</p>
+
+            <div class="features-tabs">
+                <button class="ftab active" data-tab="0">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <span data-i18n="feat_tab_0">Interface</span>
+                </button>
+                <button class="ftab" data-tab="1">
+                    <i class="fa-solid fa-atom"></i>
+                    <span data-i18n="feat_tab_1">Models</span>
+                </button>
+                <button class="ftab" data-tab="2">
+                    <i class="fa-solid fa-comments"></i>
+                    <span data-i18n="feat_tab_2">Chat</span>
+                </button>
+                <button class="ftab" data-tab="3">
+                    <i class="fa-solid fa-microphone"></i>
+                    <span data-i18n="feat_tab_3">Voice</span>
+                </button>
+                <button class="ftab" data-tab="4">
+                    <i class="fas fa-book"></i>
+                    <span data-i18n="feat_tab_4">Narrative</span>
+                </button>
+                <button class="ftab" data-tab="5">
+                    <i class="fas fa-sliders-h"></i>
+                    <span data-i18n="feat_tab_5">Settings</span>
+                </button>
+            </div>
+
+            <div class="features-panels">
+                <div class="fpanel active" data-panel="0">
+                    <div class="fpanel-text">
+                        <h3 data-i18n="feat_0_title">Ergonomics & Focus</h3>
+                        <p data-i18n="feat_0_desc">The interface is designed to remove distractions, keeping the spotlight entirely on your companion. With a streamlined sidebar, organized tabs, and polished animations, navigating the platform is natural and effortless right from the start.</p>
+                        <ul class="fpanel-list">
+                            <li data-i18n="feat_0_li_0"><i class="fas fa-check"></i> Clean and ergonomic visual style</li>
+                            <li data-i18n="feat_0_li_1"><i class="fas fa-check"></i> Sidebar and clean tab-based layout</li>
+                            <li data-i18n="feat_0_li_2"><i class="fas fa-check"></i> Interactive chat with smooth, flowing text animations</li>
+                            <li data-i18n="feat_0_li_3"><i class="fas fa-check"></i> Laconic notification toasts that never interrupt your immersion</li>
+                        </ul>
                     </div>
-                    <h3 class="feature-title-1">Простота и удобство</h3>
-                    <p class="feature-desc-1">Даже если вы впервые сталкиваетесь с ИИ - не волнуйтесь. Интутивно понятный интерфейс делает взаимодействие с приложением легким, понятным и приятным с первого запуска.</p>
+                    <div class="fpanel-visual">
+                        <img src="assets/screenshots/sc_features_interface.png" alt="Interface" class="sc-placeholder" loading="lazy">
+                    </div>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-atom"></i>
+                <div class="fpanel" data-panel="1">
+                    <div class="fpanel-text">
+                        <h3 data-i18n="feat_1_title">Freedom of AI Choice</h3>
+                        <p data-i18n="feat_1_desc">Run open-source models completely offline or connect to leading cloud APIs. With the built-in server, setting up local GGUF models is seamless — simply download your preferred model directly from the interface.</p>
+                        <ul class="fpanel-list">
+                            <li data-i18n="feat_1_li_0"><i class="fas fa-check"></i> Top-tier cloud models: Claude, DeepSeek, GPT-4o, Gemini, Grok, and Qwen</li>
+                            <li data-i18n="feat_1_li_1"><i class="fas fa-check"></i> Built-in Llama CPP Server with full hardware acceleration</li>
+                            <li data-i18n="feat_1_li_2"><i class="fas fa-check"></i> Visual download manager for local models with instant cancellation</li>
+                            <li data-i18n="feat_1_li_3"><i class="fas fa-check"></i> Native acceleration for CUDA, Vulkan, Intel SYCL, and AMD HIP</li>
+                        </ul>
                     </div>
-                    <h3 class="feature-title-2">Языковые модели</h3>
-                    <p class="feature-desc-2">Вы можете использовать API от ведущих платформ, но программа также позволяет запускать локальные языковые модели прямо внутри неё.</p>
+                    <div class="fpanel-visual">
+                        <img src="assets/screenshots/sc_features_models.png" alt="Interface" class="sc-placeholder" loading="lazy">
+                    </div>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-comments"></i>
+                <div class="fpanel" data-panel="2">
+                    <div class="fpanel-text">
+                        <h3 data-i18n="feat_2_title">Feature-Rich Chat</h3>
+                        <p data-i18n="feat_2_desc">A complete space for deep conversation: manage chat histories, organize your library into folders, make live audio calls, and set custom backgrounds. You can even send empty messages to prompt your companion to continue their train of thought.</p>
+                        <ul class="fpanel-list">
+                            <li data-i18n="feat_2_li_0"><i class="fas fa-check"></i> Organize your character library easily using custom folders</li>
+                            <li data-i18n="feat_2_li_1"><i class="fas fa-check"></i> Seamless history import/export and contextual author notes</li>
+                            <li data-i18n="feat_2_li_2"><i class="fas fa-check"></i> Local web client to chat from your smartphone within your home network</li>
+                            <li data-i18n="feat_2_li_3"><i class="fas fa-check"></i> Custom chat backdrops and a dedicated text-generation stop button</li>
+                        </ul>
                     </div>
-                    <h3 class="feature-title-3">Общение с персонажами</h3>
-                    <p class="feature-desc-3">Общайтесь с персонажами с помощью многофункционального чата - кастомизируйте, управляйте сообщениями, импортируйте чаты и звоните персонажам.</p>
+                    <div class="fpanel-visual">
+                        <img src="assets/screenshots/sc_features_chat.png" alt="Interface" class="sc-placeholder" loading="lazy">
+                    </div>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-microphone"></i>
+                <div class="fpanel" data-panel="3">
+                    <div class="fpanel-text">
+                        <h3 data-i18n="feat_3_title">Voice & Visual Presence</h3>
+                        <p data-i18n="feat_3_desc">Characters speak naturally using advanced speech engines with life-like inflections. Voice playback starts instantly, sentence-by-sentence, eliminating awkward wait times. The platform supports dynamic Live2D (with motion animations), 3D VRM avatars, custom images, and GIFs.</p>
+                        <ul class="fpanel-list">
+                            <li data-i18n="feat_3_li_0"><i class="fas fa-check"></i> Instant, sentence-by-sentence voice streaming with zero delays</li>
+                            <li data-i18n="feat_3_li_1"><i class="fas fa-check"></i> Multiple text-to-speech options, voice cloning, and RVC parameters</li>
+                            <li data-i18n="feat_3_li_2"><i class="fas fa-check"></i> Interactive Live2D and VRM avatars with motion support and LipSync</li>
+                            <li data-i18n="feat_3_li_3"><i class="fas fa-check"></i> Real-time text analysis recognizing 28 distinct emotional states</li>
+                        </ul>
                     </div>
-                    <h3 class="feature-title-4">Голос и анимация</h3>
-                    <p class="feature-desc-4">Персонажи могут говорить через различные TTS-системы и реагировать с помощью поз и анимаций, используя изображения, Live2D или VRM модели. В программе доступно 28 различных эмоций.</p>
+                    <div class="fpanel-visual">
+                        <img src="assets/screenshots/sc_features_voice.png" alt="Interface" class="sc-placeholder" loading="lazy">
+                    </div>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-cloud-download-alt"></i>
+                <div class="fpanel" data-panel="4">
+                    <div class="fpanel-text">
+                        <h3 data-i18n="feat_4_title">Professional Narrative</h3>
+                        <p data-i18n="feat_4_desc">Fine-tune story arcs and character depth using layered lorebooks, custom state variables, and the interactive Soul Stage mode. The virtual Game Master takes care of all the world-building, tracking, and campaign progression for your adventure.</p>
+                        <ul class="fpanel-list">
+                            <li data-i18n="feat_4_li_0"><i class="fas fa-check"></i> Link multiple lorebooks simultaneously with semantic story triggers</li>
+                            <li data-i18n="feat_4_li_1"><i class="fas fa-check"></i> Soul Stage RPG system with a unified World State and inventory</li>
+                            <li data-i18n="feat_4_li_2"><i class="fas fa-check"></i> Custom state variables visualized via an adaptive horizontal HUD</li>
+                            <li data-i18n="feat_4_li_3"><i class="fas fa-check"></i> Industry-standard V2 Spec compatibility (PNG/JSON card import)</li>
+                        </ul>
                     </div>
-                    <h3 class="feature-title-5">Интеграция с Hugging Face</h3>
-                    <p class="feature-desc-5">Загружайте и управляйте локальными языковыми моделями прямо в приложении. Поддерживается удобный формат GGUF для быстрой и эффективной работы на вашем устройстве. Работает на процессорах и видеокартах NVIDIA и AMD.</p>
+                    <div class="fpanel-visual">
+                        <img src="assets/screenshots/sc_features_narrative.png" alt="Interface" class="sc-placeholder" loading="lazy">
+                    </div>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-sliders-h"></i>
+                <div class="fpanel" data-panel="5">
+                    <div class="fpanel-text">
+                        <h3 data-i18n="feat_5_title">Advanced Configuration</h3>
+                        <p data-i18n="feat_5_desc">A complete control center for your AI engine. Fine-tune advanced text samplers, local model quantization parameters, MoE layers, context window sizing, and enable Thinking Mode for reasoning networks.</p>
+                        <ul class="fpanel-list">
+                            <li data-i18n="feat_5_li_0"><i class="fas fa-check"></i> Advanced samplers: Min-P, XTC, DRY, and dynamic temperature</li>
+                            <li data-i18n="feat_5_li_1"><i class="fas fa-check"></i> Low-level LLM tuning: and custom launch settings</li>
+                            <li data-i18n="feat_5_li_2"><i class="fas fa-check"></i> A wide variety of Soul of Waifu feature expansion modules</li>
+                            <li data-i18n="feat_5_li_3"><i class="fas fa-check"></i> Total appearance customization: unique themes and message bubbles</li>
+                        </ul>
                     </div>
-                    <h3 class="feature-title-6">Широкие возможности</h3>
-                    <p class="feature-desc-6">Ощутите весь спектр эмоций от ролевых игр с любимыми персонажами, тонко настраивая каждый аспект взаимодействия: системные промпты, лорбуки, параметры моделей, персоны пользователя и многое другое.</p>
+                    <div class="fpanel-visual">
+                        <img src="assets/screenshots/sc_features_settings.png" alt="Interface" class="sc-placeholder" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="screenshots">
-        <div class="section-container">
-            <h2 class="section-title screenshots-title">Интерфейс приложения</h2>
-            <div class="screenshots-grid">
-                <div class="screenshot-item fade-in">
-                    <div class="screenshot-image screenshot-1">
-                        <img src="assets/screenshots/screenshot_list.jpg">
-                    </div>
-                    <div class="caption">
-                        <h4 class="screenshot-title-1">Главное меню с персонажами</h4>
-                        <p class="screenshot-desc-1">Удобное управление всеми вашими персонажами в одном месте</p>
-                    </div>
-                </div>
-                <div class="screenshot-item fade-in">
-                    <div class="screenshot-image screenshot-2">
-                        <img src="assets/screenshots/screenshot_gateway.png">
-                    </div>
-                    <div class="caption">
-                        <h4 class="screenshot-title-2">Врата Персонажей</h4>
-                        <p class="screenshot-desc-2">Ищите и добавляйте нужных персонажей через специальный раздел</p>
-                    </div>
-                </div>
-                <div class="screenshot-item fade-in">
-                    <div class="screenshot-image screenshot-3">
-                        <img src="assets/screenshots/screenshot_chat.png">
-                    </div>
-                    <div class="caption">
-                        <h4 class="screenshot-title-3">Многофункциональный чат</h4>
-                        <p class="screenshot-desc-3">Общайтесь с любимыми персонажами в многофункциональном чате, где вы можете кастомизировать фон, аватар, авторские заметки, а также звонить персонажу</p>
+
+    <section id="screenshots" class="screenshots">
+        <canvas class="section-bg section-bg-screenshots" aria-hidden="true"></canvas>
+        <div class="section-bg-overlay" aria-hidden="true"></div>
+        <div class="section-wrap">
+            <div class="sow-console-label">
+                <span data-i18n="sc_label">Interface</span>
+                <span class="kernel-cursor"></span>
+            </div>
+            <h2 class="section-title" data-i18n="sc_title">Look inside</h2>
+            <p class="section-sub" data-i18n="sc_sub">Click on a screenshot to enlarge </p>
+
+            <div class="sc-grid" id="scGrid">
+                <div class="sc-card reveal" data-lightbox="assets/screenshots/sc_screenshots_interface.png" data-idx="0">
+                    <div class="sc-inner">
+                        <img src="assets/screenshots/sc_screenshots_interface.png" alt="Character list" loading="lazy">
+                        <div class="sc-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span data-i18n="sc_1_title">Character List</span>
+                        </div>
+                        <div class="sc-meta">
+                            <span class="sc-num">01</span>
+                            <div class="sc-meta-text">
+                                <span class="sc-title" data-i18n="sc_1_title">Character List</span>
+                                <span class="sc-desc" data-i18n="sc_1_desc">Interactive cards with quick access to settings</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="screenshot-item fade-in">
-                    <div class="screenshot-image screenshot-4">
-                        <img src="assets/screenshots/screenshot_settings.jpg">
-                    </div>
-                    <div class="caption">
-                        <h4 class="screenshot-title-4">Продвинутые настройки</h4>
-                        <p class="screenshot-desc-4">Экспериментируйте с гибкими настройками и адаптируйте программу под свои потребности</p>
-                    </div>
-                </div>
-                <div class="screenshot-item fade-in">
-                    <div class="screenshot-image screenshot-5">
-                        <img src="assets/screenshots/screenshot_models_hub.jpg">
-                    </div>
-                    <div class="caption">
-                        <h4 class="screenshot-title-5">Локальные языковые модели</h4>
-                        <p class="screenshot-desc-5">Загружайте и управляйте локальными языковыми моделями прямо в приложении, благодаря интеграции с сайтом Hugging Face</p>
+                <div class="sc-card reveal" data-lightbox="assets/screenshots/sc_screenshots_chat.png" data-idx="1">
+                    <div class="sc-inner">
+                        <img src="assets/screenshots/sc_screenshots_chat.png" alt="Chat" loading="lazy">
+                        <div class="sc-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span data-i18n="sc_2_title">Chat</span>
+                        </div>
+                        <div class="sc-meta">
+                            <span class="sc-num">02</span>
+                            <div class="sc-meta-text">
+                                <span class="sc-title" data-i18n="sc_2_title">Chat</span>
+                                <span class="sc-desc" data-i18n="sc_2_desc">Smooth text animation and typing indicator</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="screenshot-item fade-in">
-                    <div class="screenshot-image screenshot-6">
-                        <img src="assets/screenshots/screenshot_sow_system.jpg">
+                <div class="sc-card reveal" data-lightbox="assets/screenshots/sc_screenshots_char_editor.png" data-idx="2">
+                    <div class="sc-inner">
+                        <img src="assets/screenshots/sc_screenshots_char_editor.png" alt="Character editor" loading="lazy">
+                        <div class="sc-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span data-i18n="sc_3_title">Character Editor</span>
+                        </div>
+                        <div class="sc-meta">
+                            <span class="sc-num">03</span>
+                            <div class="sc-meta-text">
+                                <span class="sc-title" data-i18n="sc_3_title">Character Editor</span>
+                                <span class="sc-desc" data-i18n="sc_3_desc">Detailed personality and scenario setup</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="caption">
-                        <h4 class="screenshot-title-6">Soul of Waifu System</h4>
-                        <p class="screenshot-desc-6">Разговаривайте с персонажем через микрофон с помощью модуля Soul of Waifu System</p>
+                </div>
+                <div class="sc-card reveal" data-lightbox="assets/screenshots/sc_screenshots_lorebook_editor.png" data-idx="3">
+                    <div class="sc-inner">
+                        <img src="assets/screenshots/sc_screenshots_lorebook_editor.png" alt="Lorebook" loading="lazy">
+                        <div class="sc-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span data-i18n="sc_4_title">Lorebook</span>
+                        </div>
+                        <div class="sc-meta">
+                            <span class="sc-num">04</span>
+                            <div class="sc-meta-text">
+                                <span class="sc-title" data-i18n="sc_4_title">Lorebook</span>
+                                <span class="sc-desc" data-i18n="sc_4_desc">Game Master and story event triggers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sc-card reveal" data-lightbox="assets/screenshots/sc_screenshots_models_hub.png" data-idx="4">
+                    <div class="sc-inner">
+                        <img src="assets/screenshots/sc_screenshots_models_hub.png" alt="Models Hub" loading="lazy">
+                        <div class="sc-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span data-i18n="sc_5_title">Models Hub</span>
+                        </div>
+                        <div class="sc-meta">
+                            <span class="sc-num">05</span>
+                            <div class="sc-meta-text">
+                                <span class="sc-title" data-i18n="sc_5_title">Models Hub</span>
+                                <span class="sc-desc" data-i18n="sc_5_desc">Download and manage GGUF models</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sc-card reveal" data-lightbox="assets/screenshots/sc_sow_system.png" data-idx="5">
+                    <div class="sc-inner">
+                        <img src="assets/screenshots/sc_sow_system.png" alt="SoW System" loading="lazy">
+                        <div class="sc-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span data-i18n="sc_6_title">SoW System</span>
+                        </div>
+                        <div class="sc-meta">
+                            <span class="sc-num">06</span>
+                            <div class="sc-meta-text">
+                                <span class="sc-title" data-i18n="sc_6_title">SoW System</span>
+                                <span class="sc-desc" data-i18n="sc_6_desc">Talk to the character via microphone</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sc-card reveal" data-lightbox="assets/screenshots/sc_screenshots_soul_memory.png" data-idx="6">
+                    <div class="sc-inner">
+                        <img src="assets/screenshots/sc_screenshots_soul_memory.png" alt="Soul Memory" loading="lazy">
+                        <div class="sc-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span data-i18n="sc_7_title">Soul Memory</span>
+                        </div>
+                        <div class="sc-meta">
+                            <span class="sc-num">07</span>
+                            <div class="sc-meta-text">
+                                <span class="sc-title" data-i18n="sc_7_title">Soul Memory</span>
+                                <span class="sc-desc" data-i18n="sc_7_desc">Cognitive memory layers & personal diary</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sc-card reveal" data-lightbox="assets/screenshots/sc_screenshots_soul_stage.png" data-idx="7">
+                    <div class="sc-inner">
+                        <img src="assets/screenshots/sc_screenshots_soul_stage.png" alt="Soul Stage" loading="lazy">
+                        <div class="sc-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span data-i18n="sc_8_title">Soul Stage</span>
+                        </div>
+                        <div class="sc-meta">
+                            <span class="sc-num">08</span>
+                            <div class="sc-meta-text">
+                                <span class="sc-title" data-i18n="sc_8_title">Soul Stage</span>
+                                <span class="sc-desc" data-i18n="sc_8_desc">Interactive RPG-session under virtual GM control</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sc-card reveal" data-lightbox="assets/screenshots/sc_screenshots_soul_companion.jpg" data-idx="8">
+                    <div class="sc-inner">
+                        <img src="assets/screenshots/sc_screenshots_soul_companion.jpg" alt="Soul Companion" loading="lazy">
+                        <div class="sc-overlay">
+                            <i class="fas fa-expand-alt"></i>
+                            <span data-i18n="sc_9_title">Soul Companion</span>
+                        </div>
+                        <div class="sc-meta">
+                            <span class="sc-num">09</span>
+                            <div class="sc-meta-text">
+                                <span class="sc-title" data-i18n="sc_9_title">Soul Companion</span>
+                                <span class="sc-desc" data-i18n="sc_9_desc">Desktop companion widget with neurohormones & MCP</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="lightbox" id="lightbox">
+        <div class="lb-backdrop" id="lbBackdrop"></div>
+        <button class="lb-close" id="lbClose" title="Close (Esc)"><i class="fas fa-times"></i></button>
+        <button class="lb-nav lb-prev" id="lbPrev" title="Previous (←)"><i class="fas fa-chevron-left"></i></button>
+        <button class="lb-nav lb-next" id="lbNext" title="Next (→)"><i class="fas fa-chevron-right"></i></button>
+        <img src="" alt="" id="lbImg">
+        <div class="lb-caption" id="lbCaption"></div>
+        <div class="lb-counter" id="lbCounter">1 / 6</div>
+    </div>
+
     <section id="history" class="history">
-        <div id="history-particles"></div>
-        <div class="section-container history-content-wrapper">
-            <h2 class="section-title history-title">История развития</h2>
-            <div class="history-timeline-container">
-                <div class="history-timeline">
-                    <div class="history-item fade-in">
-                        <div class="history-date">2023</div>
-                        <div class="history-image">
-                            <div class="image-placeholder">
-                                <img src="assets/screenshots/screenshot_version_console.jpg" width="100%" height="100%">
-                            </div>
+        <canvas class="section-bg section-bg-history" aria-hidden="true"></canvas>
+        <div class="section-bg-overlay" aria-hidden="true"></div>
+        <div class="section-wrap">
+            <div class="sow-console-label">
+                <span data-i18n="hist_label">History</span>
+                <span class="kernel-cursor"></span>
+            </div>
+            <h2 class="section-title" data-i18n="hist_title">Development journey</h2>
+            <p class="section-sub" data-i18n="hist_sub">From a console tool to a multi-dimensional character platform</p>
+
+            <div class="hist-stats reveal">
+                <div class="hist-stat">
+                    <span class="hs-num" id="ghStars">742</span>
+                    <span class="hs-label" data-i18n="hist_stat_0">GitHub stars</span>
+                </div>
+                <div class="hs-sep"></div>
+                <div class="hist-stat">
+                    <span class="hs-num">~14000</span>
+                    <span class="hs-label" data-i18n="hist_stat_1">downloads</span>
+                </div>
+                <div class="hs-sep"></div>
+                <div class="hist-stat">
+                    <span class="hs-num">3</span>
+                    <span class="hs-label" data-i18n="hist_stat_2">years in development</span>
+                </div>
+                <div class="hs-sep"></div>
+                <div class="hist-stat">
+                    <span class="hs-num" id="discordCount">1600</span>
+                    <span class="hs-label" data-i18n="hist_stat_3">community members</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="tl-spine"></div>
+
+                <div class="tl-item reveal">
+                    <div class="tl-node"><span>2023</span></div>
+                    <div class="tl-card">
+                        <div class="tl-img">
+                            <img src="assets/screenshots/screenshot_version_console.jpg" alt="Console version" loading="lazy">
+                            <span class="tl-ver-chip">2023</span>
                         </div>
-                        <div class="history-content">
-                            <h3 class="history-title-1">Консольная программа</h3>
-                            <p class="history-desc-1">Начало пути - простая консольная утилита для взаимодействия с ИИ. Базовая функциональность и текстовый интерфейс.</p>
+                        <div class="tl-body">
+                            <div class="tl-year-tag">September 2023</div>
+                            <h3 data-i18n="hist_0_title">Console program</h3>
+                            <p data-i18n="hist_0_desc">The beginning — a simple console utility for AI interaction with basic text input and logic. The first commit that would grow into Soul of Waifu.</p>
                         </div>
                     </div>
-                    <div class="history-item fade-in">
-                        <div class="history-date">2024 - v1.0</div>
-                        <div class="history-image">
-                            <div class="image-placeholder">
-                                <img src="assets/screenshots/screenshot_version_1.jpg" width="100%" height="100%">
-                            </div>
+                </div>
+
+                <div class="tl-item reveal tl-right">
+                    <div class="tl-node"><span>v1</span></div>
+                    <div class="tl-card">
+                        <div class="tl-img">
+                            <img src="assets/screenshots/screenshot_version_1.jpg" alt="v1.0" loading="lazy">
+                            <span class="tl-ver-chip">v1.0</span>
                         </div>
-                        <div class="history-content">
-                            <h3 class="history-title-2">Полноценный графический интерфейс</h3>
-                            <p class="history-desc-2">Переход от консоли к графическому интерфейсу. Работал только с Character AI и не имел большинства функций.</p>
-                        </div>
-                    </div>
-                    <div class="history-item fade-in">
-                        <div class="history-date">2025 - v2.0</div>
-                        <div class="history-image">
-                            <div class="image-placeholder">
-                                <img src="assets/screenshots/screenshot_version_2_0.jpg" width="100%" height="100%">
-                            </div>
-                        </div>
-                        <div class="history-content">
-                            <h3 class="history-title-3">Полностью с нуля</h3>
-                            <p class="history-desc-3">Полная переработка архитектуры и переписанный с нуля код. Добавлена поддержка облачных сервисов и локальных языковых моделей, аватары персонажей и модуль Soul of Waifu System.</p>
+                        <div class="tl-body">
+                            <div class="tl-year-tag">2024 — v1.0</div>
+                            <h3 data-i18n="hist_1_title">First graphical interface</h3>
+                            <p data-i18n="hist_1_desc">Move to GUI. Worked only with Character AI — but it was a big step forward.</p>
                         </div>
                     </div>
-                    <div class="history-item fade-in">
-                        <div class="history-date">2025 - v2.2</div>
-                        <div class="history-image">
-                            <div class="image-placeholder">
-                                <img src="assets/screenshots/screenshot_version_2_2.jpg" width="100%" height="100%">
+                </div>
+
+                <div class="tl-item reveal">
+                    <div class="tl-node"><span>v2.0</span></div>
+                    <div class="tl-card">
+                        <div class="tl-img">
+                            <img src="assets/screenshots/screenshot_version_2_0.jpg" alt="v2.0" loading="lazy">
+                            <span class="tl-ver-chip">v2.0</span>
+                        </div>
+                        <div class="tl-body">
+                            <div class="tl-year-tag">March–April 2025 — v2.0 / v2.1</div>
+                            <h3 data-i18n="hist_2_title">Built from scratch</h3>
+                            <p data-i18n="hist_2_desc">A full platform rewrite (v2.0): new GUI, local GGUF models, Mistral AI integration, and XTTS voice synthesis. A month later, v2.1 added OpenAI and OpenRouter support plus Edge TTS with RVC voice cloning.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal tl-right">
+                    <div class="tl-node"><span>v2.2</span></div>
+                    <div class="tl-card">
+                        <div class="tl-img">
+                            <img src="assets/screenshots/screenshot_version_2_2.jpg" alt="v2.2" loading="lazy">
+                            <span class="tl-ver-chip">v2.2</span>
+                        </div>
+                        <div class="tl-body">
+                            <div class="tl-year-tag">August 30, 2025 — v2.2</div>
+                            <h3 data-i18n="hist_3_title">Visual Evolution</h3>
+                            <p data-i18n="hist_3_desc">A complete interface redesign — the “Soul Renaissance” release. Added VRM avatar support, GPU acceleration (CUDA/Vulkan), the Models Hub, lorebooks, Smart Memory, and ambient sounds.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal">
+                    <div class="tl-node"><span>v2.3</span></div>
+                    <div class="tl-card">
+                        <div class="tl-img">
+                            <img src="assets/screenshots/sc_sow_system.png" alt="v2.3" loading="lazy">
+                            <span class="tl-ver-chip">v2.3</span>
+                        </div>
+                        <div class="tl-body">
+                            <div class="tl-year-tag">March 30, 2026 — v2.3</div>
+                            <h3 data-i18n="hist_4_title">Era of living companions</h3>
+                            <p data-i18n="hist_4_desc">The “Soul Resonance” release: real-time voice with interruption and LipSync, the launch of Desktop Companion mode, a new RPG lorebook engine, the signature Liquid Glass interface, local-model improvements, and automatic chat summarization.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal tl-right">
+                    <div class="tl-node tl-node-latest"><span>v2.4.0</span></div>
+                    <div class="tl-card tl-card-hot">
+                        <div class="tl-img">
+                            <img src="assets/screenshots/sc_screenshots_soul_stage.png" alt="v2.4.0" loading="lazy">
+                            <span class="tl-ver-chip">v2.4.0</span>
+                        </div>
+                        <div class="tl-body">
+                            <div class="tl-year-tag">2026 — v2.4.0 <span class="hot-badge" data-i18n="hist_latest">Current</span></div>
+                            <h3 data-i18n="hist_5_title">Four Dimensions</h3>
+                            <p data-i18n="hist_5_desc">The release that delivers all four dimensions at once: the Soul Memory long-term memory module, the Soul Stage RPG mode with a virtual Game Master, and a fully reworked desktop companion — now called Soul Companion — with MCP tool support. Plus a Discord gateway, local web client, image generation, and a full interface redesign.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal tl-left">
+                    <div class="tl-node tl-node-future"><span>??</span></div>
+                    <div class="tl-card tl-card-future">
+                        <div class="tl-future-visual">
+                            <div class="tfv-orb"></div>
+                            <div class="tfv-rings">
+                                <span></span><span></span><span></span>
                             </div>
                         </div>
-                        <div class="history-content">
-                            <h3 class="history-title-4">Крупнейшее обновление v2.2</h3>
-                            <p class="history-desc-4">Новейшая версия с полностью переработанным интерфейсом, поддержкой VRM моделей, множественных персон, лорбуков, изменения системных промптов, эмбиента, умной памяти, новых TTS-систем и многого другого.</p>
+                        <div class="tl-body">
+                            <div class="tl-year-tag tl-future-tag" data-i18n="hist_future_tag">Shaping the Future</div>
+                            <h3 data-i18n="hist_future_title">The next chapter is yours to write</h3>
+                            <p data-i18n="hist_future_desc">Soul of Waifu is driven entirely by its community. What comes next depends on your ideas, feedback, and active involvement. Join our official Discord server to discuss development, suggest new features, and directly influence the evolution of the project.</p>
+                            <a href="https://discord.com/invite/6vFtQGVfxM" target="_blank" rel="noopener" class="tl-future-link">
+                                <i class="fab fa-discord"></i> <span data-i18n="hist_future_link">Join our Discord</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <section id="download" class="download">
-        <div class="section-container">
-            <div class="download-content">
-                <h2 class="section-title download-title">Скачать Soul of Waifu</h2>
-                <p class="download-description">Загрузите самую последнюю версию приложения и погрузитесь в мир ролевых игр с искусственным интеллектом уже сейчас!</p>
-                <div class="download-buttons">
-                    <a href="https://github.com/jofizcd/Soul-of-Waifu/releases/download/v2.2.0/Soul-of-Waifu-v2.2.0.7z" class="btn btn-primary windows-btn">Скачать для Windows</a>
+        <div class="dl-aura"></div>
+        <div class="section-wrap">
+            <div class="dl-box">
+                <div class="dl-left">
+                    <div class="sow-console-label">
+                        <span data-i18n="dl_label">Download</span>
+                        <span class="kernel-cursor"></span>
+                    </div>
+                    <h2 data-i18n="dl_title">Ready to dive in?</h2>
+                    <p data-i18n="dl_desc">Download Soul of Waifu and start creating your characters right now. Free and open source.</p>
+                    <div class="dl-buttons">
+                        <a href="https://github.com/jofizcd/Soul-of-Waifu/releases/download/v2.4.0/Soul-of-Waifu-v2.4.0.7z" class="btn-glow btn-dl-main">
+                            <i class="fab fa-windows"></i>
+                            <span>
+                                <small data-i18n="dl_for">Download for</small>
+                                Windows
+                            </span>
+                        </a>
+                        <a href="https://github.com/jofizcd/Soul-of-Waifu" class="btn-ghost" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    <div class="dl-meta">
+                        <span><i class="fas fa-tag"></i> v2.4.0</span>
+                        <span><i class="fas fa-weight-hanging"></i> ~7 GB</span>
+                        <a href="https://github.com/jofizcd/Soul-of-Waifu/releases" target="_blank" rel="noopener" data-i18n="dl_changelog"><i class="fas fa-list-ul"></i> Changelog</a>
+                    </div>
                 </div>
-                <div class="version-info">
-                    <span class="version-text">Версия 2.2.0 | Размер: ~7GB | </span><a href="https://github.com/jofizcd/Soul-of-Waifu/releases" class="changelog-link">История изменений</a>
+                <div class="dl-right">
+                    <h4 data-i18n="req_title">System requirements</h4>
+                    <ul class="req-list">
+                        <li><i class="fab fa-windows"></i> <span data-i18n="req_os">Windows 10 / 11 (64-bit)</span></li>
+                        <li><i class="fas fa-memory"></i> <span data-i18n="req_ram">16 GB RAM (32 GB recommended)</span></li>
+                        <li><i class="fas fa-microchip"></i> <span data-i18n="req_gpu">NVIDIA / AMD GPU (optional)</span></li>
+                        <li><i class="fas fa-hdd"></i> <span data-i18n="req_disk">~7 GB free space</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-    <footer>
-        <div class="section-container">
-            <div class="footer-container">
-                <div class="footer-section">
-                    <h3 class="footer-title">Soul of Waifu</h3>
-                    <p class="footer-description">Уникальное приложение для взаимодействия с ИИ-персонажами. Создавайте, настраивайте и общайтесь без лишних трудностей.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/jofizcd/Soul-of-Waifu" class="github-link"><i class="fab fa-github"></i></a>
-                        <a href="https://t.me/+UOWReJ5WlTAwOTk6" class="telegram-link"><i class="fab fa-telegram"></i></a>
-                        <a href="https://discord.com/invite/6vFtQGVfxM" class="discord-link"><i class="fab fa-discord"></i></a>
-                        <a href="https://www.donationalerts.com/r/jofizcd" class="social-icon" title="Donation Alerts"><i class="fa-solid fa-hand-holding-dollar"></i></a>
-                        <a href="https://boosty.to/jofizcd" class="social-icon" title="Boosty"><i class="fa-solid fa-circle-dollar-to-slot"></i></a>
+
+    <footer class="footer">
+        <div class="footer-glow"></div>
+        <div class="section-wrap">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/icons/logotitle.png" alt="Soul of Waifu" class="footer-logo logo-dark">
+                    <img src="assets/icons/logotitle_black.png" alt="Soul of Waifu" class="footer-logo logo-light">
+                    <p data-i18n="footer_desc">Desktop app for interacting with AI characters. Create, customize and chat.</p>
+                    <div class="social-row">
+                        <a href="https://github.com/jofizcd/Soul-of-Waifu" title="GitHub" class="soc-btn"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/waytojofistar" title="Telegram" class="soc-btn"><i class="fab fa-telegram"></i></a>
+                        <a href="https://discord.com/invite/6vFtQGVfxM" title="Discord" class="soc-btn"><i class="fab fa-discord"></i></a>
+                        <a href="https://www.youtube.com/@jofizcd" title="YouTube" class="soc-btn"><i class="fab fa-youtube"></i></a>
+                        <a href="https://boosty.to/jofizcd" title="Boosty" class="soc-btn"><i class="fa-solid fa-hand-holding-dollar"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h3 class="navigation-title">Навигация</h3>
-                    <ul>
-                        <li><a href="#home" class="footer-home">Главная</a></li>
-                        <li><a href="#features" class="footer-features">Возможности</a></li>
-                        <li><a href="#screenshots" class="footer-screenshots">Скриншоты</a></li>
-                        <li><a href="#history" class="footer-history">История</a></li>
-                        <li><a href="#download" class="footer-download">Скачать</a></li>
-                    </ul>
+                <div class="footer-col">
+                    <h5 data-i18n="footer_nav">Navigation</h5>
+                    <a href="#home" data-i18n="nav_home">Home</a>
+                    <a href="#dimensions" data-i18n="nav_dimensions">Dimensions</a>
+                    <a href="#features" data-i18n="nav_features">Features</a>
+                    <a href="#screenshots" data-i18n="nav_screenshots">Interface</a>
+                    <a href="#history" data-i18n="nav_history">History</a>
+                    <a href="#download" data-i18n="nav_download">Download</a>
                 </div>
-                <div class="footer-section">
-                    <h3 class="resources-title">Ресурсы</h3>
-                    <ul>
-                        <li><a href="https://github.com/jofizcd/Soul-of-Waifu" class="github-link-2">GitHub репозиторий</a></li>
-                        <li><a href="docs/overview/overview.html" class="docs-link">Документация</a></li>
-                    </ul>
+                <div class="footer-col">
+                    <h5 data-i18n="footer_resources">Resources</h5>
+                    <a href="https://github.com/jofizcd/Soul-of-Waifu" target="_blank" rel="noopener">GitHub</a>
+                    <a href="docs/index.html" data-i18n="footer_docs">Documentation</a>
+                    <a href="https://github.com/jofizcd/Soul-of-Waifu/releases" target="_blank" rel="noopener" data-i18n="footer_releases">Releases</a>
                 </div>
-                <div class="footer-section">
-                    <h3 class="contacts-title">Социальные сети</h3>
-                    <ul>
-                        <li><a href="https://www.youtube.com/@jofizcd" class="youtube-link">YouTube канал</a></li>
-                        <li><a href="https://t.me/+UOWReJ5WlTAwOTk6" class="telegram-link-2">Telegram канал</a></li>
-                        <li><a href="https://discord.com/invite/6vFtQGVfxM" class="discord-link-2">Discord сервер</a></li>
-                        <li><a href="https://boosty.to/jofizcd" class="boosty-link">Boosty</a></li>
-                    </ul>
+                <div class="footer-col">
+                    <h5 data-i18n="footer_community">Community</h5>
+                    <a href="https://www.youtube.com/@jofizcd" target="_blank" rel="noopener">YouTube</a>
+                    <a href="https://t.me/waytojofistar" target="_blank" rel="noopener">Telegram</a>
+                    <a href="https://discord.com/invite/6vFtQGVfxM" target="_blank" rel="noopener">Discord</a>
+                    <a href="https://boosty.to/jofizcd" target="_blank" rel="noopener">Boosty</a>
                 </div>
             </div>
-            <div class="copyright">
-                <p class="copyright-text">&copy; 2025 Soul of Waifu. Разработал jofizcd.</p>
+            <div class="footer-bottom">
+                <span data-i18n="footer_copy">&copy; 2026 Soul of Waifu. Built by Jofi.</span>
+                <span class="footer-sep">·</span>
+                <span>Open Source · GPL-3.0 License</span>
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
-
 </html>
