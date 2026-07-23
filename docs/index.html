@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul of Waifu — Documentation</title>
+    <meta name="description" content="Official documentation for Soul of Waifu — open-source app for AI RP with Live2D/VRM avatars and voice.">
+    <meta name="author" content="Jofi">
+    <meta name="theme-color" content="#06060c">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Soul of Waifu">
+    <meta property="og:title" content="Soul of Waifu — Documentation">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/logotype.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+    <header id="mainHeader">
+        <div class="header-inner">
+            <a href="../index.html" class="logo-link" title="Back to Soul of Waifu">
+                <span class="logo-text">
+                    <img src="../assets/icons/logotitle.png" alt="Soul of Waifu" class="logo-img logo-dark">
+                    <img src="../assets/icons/logotitle_black.png" alt="Soul of Waifu" class="logo-img logo-light">
+                    <span class="logo-divider"></span>
+                    <span class="logo-sub" data-i18n="logo_docs">Documentation</span>
+                </span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="../index.html#download" class="nav-link" data-i18n="nav_download">Download</a>
+                <a href="../index.html#features" class="nav-link" data-i18n="nav_features">Features</a>
+                <a href="https://github.com/jofizcd/Soul-of-Waifu" target="_blank" rel="noopener" class="nav-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </nav>
+
+            <div class="header-controls">
+                <button class="theme-btn" id="themeBtn" title="Change theme" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="lang-btn" id="langBtn" aria-label="Switch language">RU</button>
+                <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <div class="doc-layout">
+        <aside class="doc-sidebar" id="docSidebar">
+            <div class="sidebar-inner">
+                <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="sidebar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="sidebarSearch" data-i18n-ph="search_placeholder" placeholder="Search docs…">
+                </div>
+                <nav class="sidebar-nav" id="sidebarNav">
+                </nav>
+                <div class="sidebar-footer">
+                    <a href="https://github.com/jofizcd/Soul-of-Waifu" target="_blank" rel="noopener" class="sidebar-link-ext">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://discord.com/invite/6vFtQGVfxM" target="_blank" rel="noopener" class="sidebar-link-ext">
+                        <i class="fab fa-discord"></i> Discord
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="doc-main" id="docMain">
+            <div class="doc-toolbar">
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="doc-breadcrumb" id="docBreadcrumb">
+                    <span class="crumb-root" data-i18n="docs_root">Docs</span>
+                    <span class="crumb-sep">/</span>
+                    <span class="crumb-current" id="crumbCurrent">—</span>
+                </div>
+                <a href="#" class="doc-edit-link" id="editLink" target="_blank" rel="noopener" title="Edit on GitHub">
+                    <i class="fas fa-pen"></i> <span data-i18n="edit_page">Edit</span>
+                </a>
+            </div>
+
+            <article class="doc-content" id="docContent">
+                <div class="doc-loading">
+                    <div class="loader-orb"></div>
+                    <p data-i18n="loading">Loading documentation…</p>
+                </div>
+            </article>
+
+            <nav class="doc-pagination" id="docPagination">
+            </nav>
+        </main>
+
+        <aside class="doc-toc" id="docToc">
+            <div class="toc-inner">
+                <div class="toc-label" data-i18n="on_this_page">On this page</div>
+                <nav class="toc-list" id="tocList"></nav>
+                <div class="toc-back-top" id="tocBackTop">
+                    <a href="#docMain"><i class="fas fa-arrow-up"></i> <span data-i18n="back_to_top">Back to top</span></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-glow"></div>
+        <div class="section-wrap">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <p data-i18n="footer_desc">Desktop app for interacting with AI characters. Create, customize and chat.</p>
+                    <div class="social-row">
+                        <a href="https://github.com/jofizcd/Soul-of-Waifu" title="GitHub" class="soc-btn"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/waytojofistar" title="Telegram" class="soc-btn"><i class="fab fa-telegram"></i></a>
+                        <a href="https://discord.com/invite/6vFtQGVfxM" title="Discord" class="soc-btn"><i class="fab fa-discord"></i></a>
+                        <a href="https://www.youtube.com/@jofizcd" title="YouTube" class="soc-btn"><i class="fab fa-youtube"></i></a>
+                        <a href="https://boosty.to/jofizcd" title="Boosty" class="soc-btn"><i class="fa-solid fa-hand-holding-dollar"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5 data-i18n="footer_nav">Navigation</h5>
+                    <a href="../index.html#home" data-i18n="nav_home">Home</a>
+                    <a href="../index.html#dimensions" data-i18n="nav_dimensions">Concept</a>
+                    <a href="../index.html#features" data-i18n="nav_features">Features</a>
+                    <a href="../index.html#download" data-i18n="nav_download">Download</a>
+                </div>
+                <div class="footer-col">
+                    <h5 data-i18n="footer_resources">Resources</h5>
+                    <a href="https://github.com/jofizcd/Soul-of-Waifu" target="_blank" rel="noopener">GitHub</a>
+                    <a href="#overview" data-i18n="footer_docs">Documentation</a>
+                    <a href="https://github.com/jofizcd/Soul-of-Waifu/releases" target="_blank" rel="noopener" data-i18n="footer_releases">Releases</a>
+                </div>
+                <div class="footer-col">
+                    <h5 data-i18n="footer_community">Community</h5>
+                    <a href="https://www.youtube.com/@jofizcd" target="_blank" rel="noopener">YouTube</a>
+                    <a href="https://t.me/waytojofistar" target="_blank" rel="noopener">Telegram</a>
+                    <a href="https://discord.com/invite/6vFtQGVfxM" target="_blank" rel="noopener">Discord</a>
+                    <a href="https://boosty.to/jofizcd" target="_blank" rel="noopener">Boosty</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span data-i18n="footer_copy">&copy; 2026 Soul of Waifu. Built by Jofi.</span>
+                <span class="footer-sep">·</span>
+                <span>Open Source · GPL-3.0 License</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.11/dist/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="js/docs.js"></script>
+</body>
+</html>
